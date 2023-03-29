@@ -1,18 +1,18 @@
 const nodemailer = require("nodemailer");
-
+require("dotenv").config();
 const smtpTransport = require("nodemailer-smtp-transport");
 
 const transporter = nodemailer.createTransport(
   smtpTransport({
-    host: "mail.ethexenergy.ltd",
+    host: process.env.host,
     secureConnection: false,
     tls: {
       rejectUnauthorized: false,
     },
     port: 465,
     auth: {
-      user: "support@ethexenergy.ltd",
-      pass: "ethexenergy1@1",
+      user: process.env.company_mail,
+      pass: process.env.mail_password,
     },
   }),
 );
@@ -35,7 +35,7 @@ let datetime = `${currentdate.getFullYear()}-${
 
 let create_mail_options = (userInfo) => {
   return (mailOptions = {
-    from: "support@ethexenergy.ltd",
+    from: process.env.company_mail,
     // from:"michelleannschlloser@outlook.com",
     to: userInfo.reciever,
     subject: `DEPOSIT REQUEST NOTIFICATION`,
@@ -61,11 +61,13 @@ let create_mail_options = (userInfo) => {
     width: 100%;
     background-size: cover;
   ">
+  
+   <div style="text-align: center;">
+    <img src="https://bristolenergy.info/assets/images/logo'.png" style="width: 80px; text-align: center; margin: auto;" alt="Logo">
+</div>
+
     <div class="head-txt">
-      <h1 style="text-align: center; font-size: 16px; color: #825ee4">
-        ETHEXENERGY.LTD
-      </h1>
-      <h3 style="font-size: 15px">DEPOSIT REQUEST NOTIFICATION</h3>
+      <h3 style="font-size: 15px; color:#041d9b" >DEPOSIT REQUEST NOTIFICATION</h3>
     </div>
 
     <p class="sm-p">
@@ -93,12 +95,12 @@ let create_mail_options = (userInfo) => {
         color: #fff;
       "
     >
-      ETHEXENERGY.LTD
+     BRISTOLENERGY
     </h1>
     <p class="disclaimer" style="font-size: 12px; font-weight: bolder">
-      Disclaimer: this message was automatically generated via ethexenergy
+      Disclaimer: this message was automatically generated via bristolenergy
       secured channel, all correspondence
-      should be addressed to ethexenergy.ltd or your relationship officer
+      should be addressed to bristolenergy.info or your relationship officer
     </p>
   </div>
 </main>

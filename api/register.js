@@ -44,7 +44,7 @@ Router.post("/", async (req, res) => {
       password,
       // referral_link: `http://localhost:5000?${req.body.username}`,
       //  referral_link: `http://localhost:3000?${req.body.username}`,
-     referral_link:`https://bristolenergy.org?${req.body.username}`,
+     referral_link:`https://bristolenergy.info?${req.body.username}`,
       referral: req.body.referral,
     });
 

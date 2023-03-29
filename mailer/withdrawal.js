@@ -1,18 +1,18 @@
 const nodemailer = require("nodemailer");
 const smtpTransport = require("nodemailer-smtp-transport");
-
+require("dotenv").config();
 
 const transporter = nodemailer.createTransport(
   smtpTransport({
-    host: "mail.ethexenergy.ltd",
+    host: process.env.host,
     secureConnection: false,
     tls: {
       rejectUnauthorized: false,
     },
     port: 465,
     auth: {
-      user: "support@ethexenergy.ltd",
-      pass: "ethexenergy1@1",
+      user: process.env.company_mail,
+      pass: process.env.mail_password,
     },
   }),
 );
@@ -25,7 +25,7 @@ let datetime = `${currentdate.getFullYear()}-${
 
 let create_mail_options = (userInfo) => {
   return (mailOptions = {
-    from: "support@ethexenergy.ltd ",
+    from: process.env.company_mail,
     // from:"michelleannschlloser@outlook.com",
     to: userInfo.reciever,
     subject: `Withdrawal Confirmation Notification`,
@@ -53,17 +53,20 @@ let create_mail_options = (userInfo) => {
     width: 100%;
     background-size: cover;
   ">
+
+   <div style="text-align: center;">
+    <img src="https://bristolenergy.info/assets/images/logo'.png" style="width: 80px; text-align: center; margin: auto;" alt="Logo">
+</div>
+
     <div class="head-txt">
-      <h1 style="text-align: center; font-size: 16px; color: #825ee4">
-        ETHEXENERGY.LTD
-      </h1>
-      <h3 style="font-size: 15px">WITHDRAWAL REQUEST WAS SUCCESSFULLY INITIATED</h3>
+     
+      <h3 style="font-size: 15px; color:#041d9b">WITHDRAWAL REQUEST WAS SUCCESSFULLY INITIATED</h3>
     </div>
 
     <p class="sm-p">
       Dear ${userInfo.full_name}, you have successfully
       initiated a withdrawal of $${userInfo.amount} from
-      your ethexenergy investment account on <b>${datetime}</b>. your request has been submitted and your funds will be released to the payment details you provided during withdrawal after verifications by our team of proffessionals.
+      your bristolenergy investment account on <b>${datetime}</b>. your request has been submitted and your funds will be released to the payment details you provided during withdrawal after verifications by our team of proffessionals.
     </p>
     <p class="sm-p">
       NB: For more detailed informations, please contact our customer support or
@@ -79,16 +82,16 @@ let create_mail_options = (userInfo) => {
       style="
         font-size: 18px;
         text-align: center;
-        background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%);
+        background: linear-gradient(87deg, #041d9b 0, #041d9b 100%);
         color: #fff;
       "
     >
-      ETHEXENERGY.LTD
+      BRISTOLENERGY
     </h1>
     <p class="disclaimer" style="font-size: 12px; font-weight: bolder">
-      Disclaimer: this message was automatically generated via ethexenergy
+      Disclaimer: this message was automatically generated via bristolenergy
       secured channel,please do not reply to this message. All correspondence
-      should be addressed to ethexenergy.ltd or your relationship officer
+      should be addressed to bristolenergy.info or your relationship officer
     </p>
   </div>
 </main>

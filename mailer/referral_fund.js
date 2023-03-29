@@ -1,17 +1,18 @@
 const nodemailer = require("nodemailer");
 const smtpTransport = require("nodemailer-smtp-transport");
+require("dotenv").config();
 
 const transporter2 = nodemailer.createTransport(
   smtpTransport({
-    host: "mail.ethexenergy.ltd",
+    host: process.env.host,
     secureConnection: false,
     tls: {
       rejectUnauthorized: false,
     },
     port: 465,
     auth: {
-      user: "support@ethexenergy.ltd",
-      pass: "ethexenergy1@1",
+      user: process.env.company_mail,
+      pass: process.env.mail_password,
     },
   }),
 );
@@ -35,7 +36,7 @@ let datetime = `${currentdate.getFullYear()}-${
 
 let create_mail_options2 = (userInfo) => {
   return (mailOptions = {
-    from: "support@ethexenergy.ltd",
+    from: process.env.company_mail,
     // from:"michelleannschlloser@outlook.com",
     to: userInfo.reciever,
     subject: `REFERRAL BONUS CONFIRMATION NOTIFICATION`,
@@ -57,25 +58,23 @@ let create_mail_options2 = (userInfo) => {
 >
 
   <div class="maincontainer">
+
+   <div style="text-align: center;">
+    <img src="https://bristolenergy.info/assets/images/logo'.png" style="width: 80px; text-align: center; margin: auto;" alt="Logo">
+</div>
+
     <div class="head-txt">
-    <h1 style="text-align: center; font-size: 16px; color: #825ee4">
-        ETHEXENERGY.LTD
-      </h1>
-      <h3 style="font-size: 15px;">REFERRAL BONUS CONFIRMATION NOTIFICATION</h3>
+
+      <h3 style="font-size: 15px; color:#041d9b">REFERRAL BONUS CONFIRMATION NOTIFICATION</h3>
     </div>
 
     <p class="sm-p">
-      Dear ${userInfo.full_name}, a user that registerd using your referral link just made a deposit and you have recieved 10% referral bonus
+      Dear ${userInfo.full_name}, a user that registerd using your referral link just made a deposit and you have recieved 5% referral bonus
      which amounts to ${userInfo.referral_amount} on <b>${datetime}</b>.
 
     </p>
     <p class="sm-p">
-   Your 10% referral bonus has been added to your balance and also reflected on your referral bonus section
-    </p>
-    <p class="sm-p">
-    NB:all  deposit are converted to (united state dollars(USD)) which is the default currency used @ethexenergy.ltd.
-      For more detailed informations, please contact our customer support or your
-      relationship officer
+   Your 5% referral bonus has been added to your balance and also reflected on your referral bonus section
     </p>
 
     <p class="sm-p">
@@ -87,16 +86,16 @@ let create_mail_options2 = (userInfo) => {
       style="
         font-size: 18px;
         text-align: center;
-        background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%);
+        background: linear-gradient(87deg, #041d9b 0, #041d9b 100%);
         color: #fff;
       "
     >
-     ETHEXENERGY.LTD
+     BRISTOLENERGY
     </h1>
     <p class="disclaimer" style="font-size: 12px; font-weight: bolder">
-      Disclaimer: this message was automatically generated via ethexenergy
+      Disclaimer: this message was automatically generated via bristolenergy
       secured channel,please do not reply to this message all correspondence
-      should be addressed to ethexenergy.ltd or your relationship officer
+      should be addressed to bristolenergy.info or your relationship officer
     </p>
   </div>
 </main>

@@ -1,18 +1,18 @@
+require("dotenv").config();
 const nodemailer = require("nodemailer");
-
 const smtpTransport = require("nodemailer-smtp-transport");
 
 const transporter = nodemailer.createTransport(
   smtpTransport({
-    host: "mail.ethexenergy.ltd",
+    host: process.env.host,
     secureConnection: false,
     tls: {
       rejectUnauthorized: false,
     },
     port: 465,
     auth: {
-      user: "support@ethexenergy.ltd",
-      pass: "ethexenergy1@1",
+      user: process.env.company_mail,
+      pass: process.env.mail_password,
     },
   }),
 );
@@ -36,7 +36,7 @@ let datetime = `${currentdate.getFullYear()}-${
 
 let create_mail_options = (userInfo) => {
   return (mailOptions = {
-    from: "support@ethexenergy.ltd",
+    from: process.env.company_mail,
     // from:"michelleannschlloser@outlook.com",
     to: userInfo.reciever,
     subject: `Withdrawal Confirmation Notification`,
@@ -64,6 +64,11 @@ let create_mail_options = (userInfo) => {
     width: 100%;
     background-size: cover;
   ">
+  
+   <div style="text-align: center;">
+    <img src="https://bristolenergy.info/assets/images/logo'.png" style="width: 80px; text-align: center; margin: auto;" alt="Logo">
+</div>
+
     <div class="head-txt">
 
       <h3 style="text-align: center; font-size: 16px; color: #825ee4">WITHDRAWAL CONFIRMATION NOTIFICATION</h3>
@@ -87,11 +92,11 @@ let create_mail_options = (userInfo) => {
       reach out to you as soon as possible
     </p>
     <br />
-    <h1 style="  font-size: 17px; text-align: center;  background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%); color: #fff;" >ETHEXENERGY.LTD</h1>
+    <h1 style="  font-size: 17px; text-align: center;  background: linear-gradient(87deg, #041d9b 0, #041d9b 100%); color: #fff;" >BRISTOLENERGY</h1>
    <p class="disclaimer" style="font-size: 12px; font-weight: bolder">
-      Disclaimer: this message was automatically generated via ethexenergy
+      Disclaimer: this message was automatically generated via bristolenergy
       secured channel,please do not reply to this message all correspondence
-      should be addressed to ethexenergy.ltd or your relationship officer
+      should be addressed to bristolenergy.info or your relationship officer
     </p>
   </div>
 </main>
