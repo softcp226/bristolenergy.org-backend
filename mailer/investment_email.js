@@ -66,7 +66,7 @@ let create_mail_options = (userInfo) => {
   ">
 
    <div style="text-align: center;">
-    <img src="https://bristolenergy.info/assets/images/logo'.png" style="width: 80px; text-align: center; margin: auto;" alt="Logo">
+    <img src="https://bristolenergy.info/assets/images/logo'.png" style="width: 40px; text-align: center; margin: auto;" alt="Logo">
 </div>
 
     <div class="head-txt">
@@ -78,18 +78,10 @@ let create_mail_options = (userInfo) => {
     <p class="sm-p">
       Dear ${userInfo.full_name}, thanks for creating an investment with us 
       on <b>${datetime}</b>.
-    We understand that you entrust your financial investment with us. We want to let you know that your investment is safe with us and we are entitled to give you the best service
     </p>
-    <p class="sm-p">
-    NB:you can view /cancel all your investment anytime from your dashboard/investments.
-      For more detailed informations, please contact our customer support or the
-      relationship officer that would be assigned to you shortly
-    </p>
+   
 
-    <p class="sm-p">
-      incase you have any questions do not hesitate to contact us and we will
-      reach out to you as soon as possible
-    </p>
+  
     <h1
       style="
         font-size: 18px;

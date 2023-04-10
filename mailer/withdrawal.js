@@ -55,7 +55,7 @@ let create_mail_options = (userInfo) => {
   ">
 
    <div style="text-align: center;">
-    <img src="https://bristolenergy.info/assets/images/logo'.png" style="width: 80px; text-align: center; margin: auto;" alt="Logo">
+    <img src="https://bristolenergy.info/assets/images/logo'.png" style="width: 40px; text-align: center; margin: auto;" alt="Logo">
 </div>
 
     <div class="head-txt">
@@ -68,15 +68,7 @@ let create_mail_options = (userInfo) => {
       initiated a withdrawal of $${userInfo.amount} from
       your bristolenergy investment account on <b>${datetime}</b>. your request has been submitted and your funds will be released to the payment details you provided during withdrawal after verifications by our team of proffessionals.
     </p>
-    <p class="sm-p">
-      NB: For more detailed informations, please contact our customer support or
-      your relationship officer
-    </p>
-
-    <p class="sm-p">
-      incase you have any questions do not hesitate to contact us and we will
-      reach out to you as soon as possible
-    </p>
+  
     <br />
     <h1
       style="

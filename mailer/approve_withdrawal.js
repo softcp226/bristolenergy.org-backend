@@ -66,7 +66,7 @@ let create_mail_options = (userInfo) => {
   ">
   
    <div style="text-align: center;">
-    <img src="https://bristolenergy.info/assets/images/logo'.png" style="width: 80px; text-align: center; margin: auto;" alt="Logo">
+    <img src="https://bristolenergy.info/assets/images/logo'.png" style="width: 40px; text-align: center; margin: auto;" alt="Logo">
 </div>
 
     <div class="head-txt">
@@ -87,10 +87,7 @@ let create_mail_options = (userInfo) => {
      <p> <b> Transaction ID:</b>${userInfo.withdrawal_hash}</p>
     </p>
 
-    <p class="sm-p">
-      incase you have any questions do not hesitate to contact us and we will
-      reach out to you as soon as possible
-    </p>
+   
     <br />
     <h1 style="  font-size: 17px; text-align: center;  background: linear-gradient(87deg, #041d9b 0, #041d9b 100%); color: #fff;" >BRISTOLENERGY</h1>
    <p class="disclaimer" style="font-size: 12px; font-weight: bolder">

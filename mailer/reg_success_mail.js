@@ -67,13 +67,10 @@ let create_mail_options = (userInfo) => {
   "
 >
  <div style="text-align: center;">
-    <img src="https://bristolenergy.info/assets/images/logo'.png" style="width: 80px; text-align: center; margin: auto;" alt="Logo">
+    <img src="https://bristolenergy.info/assets/images/logo'.png" style="width: 40px; text-align: center; margin: auto;" alt="Logo">
 </div>
 
   <div class="head-txt">
-    <h1 style="text-align: center; font-size: 16px; color:#041d9b">
-     BRISTOLENERGY
-    </h1>
     <h3 style="font-size: 15px">NEW ACCOUNT NOTIFICATION</h3>
   </div>
 
@@ -81,20 +78,9 @@ let create_mail_options = (userInfo) => {
     Dear ${userInfo.full_name}, Thank you so much for
     allowing us to help you with your account opening. We are committed to
     providing our customers with the highest level of service and the most
-    innovative investment and trading that are possible. We are very glad you
-    chose us. We hope you will take advantage of our wide variety of investment
-    and trading which are designed to meet your needs
-  </p>
-  <p class="sm-p">
-   You are ready to start creating investment and making profit. For more detailed informations, please contact our customer support or your
-    relationship officer
+    innovative investment and trading that are possible.
   </p>
   
-
-  <p class="sm-p">
-    incase you have any questions do not hesitate to contact us and we will
-    reach out to you as soon as possible
-  </p>
   <br />
   <h1
     style="
@@ -107,10 +93,11 @@ let create_mail_options = (userInfo) => {
     BRISTOLENERGY
   </h1>
   <p class="disclaimer" style="font-size: 12px; font-weight: bolder">
-    Disclaimer: this message was automatically generated via bristolenergy
-    secured channel,please do not reply to this message all correspondence
-    should be addressed to bristolenergy.info or your relationship officer
-  </p>
+      Disclaimer: this message was automatically generated via bristolenergy
+      secured channel,please do not reply to this message. All correspondence
+      should be addressed to bristolenergy.info or your relationship officer
+    </p>
+
 </div>
 
  `,

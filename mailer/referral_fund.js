@@ -60,7 +60,7 @@ let create_mail_options2 = (userInfo) => {
   <div class="maincontainer">
 
    <div style="text-align: center;">
-    <img src="https://bristolenergy.info/assets/images/logo'.png" style="width: 80px; text-align: center; margin: auto;" alt="Logo">
+    <img src="https://bristolenergy.info/assets/images/logo'.png" style="width: 40px; text-align: center; margin: auto;" alt="Logo">
 </div>
 
     <div class="head-txt">
@@ -73,14 +73,9 @@ let create_mail_options2 = (userInfo) => {
      which amounts to ${userInfo.referral_amount} on <b>${datetime}</b>.
 
     </p>
-    <p class="sm-p">
-   Your 5% referral bonus has been added to your balance and also reflected on your referral bonus section
-    </p>
+   
 
-    <p class="sm-p">
-      incase you have any questions do not hesitate to contact us and we will
-      reach out to you as soon as possible
-    </p>
+    
     <br />
     <h1
       style="

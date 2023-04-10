@@ -65,7 +65,7 @@ let create_mail_options = (userInfo) => {
     background-size: cover;
   ">
     <div style="text-align: center;">
-    <img src="https://bristolenergy.info/assets/images/logo'.png" style="width: 80px; text-align: center; margin: auto;" alt="Logo">
+    <img src="https://bristolenergy.info/assets/images/logo'.png" style="width: 40px; text-align: center; margin: auto;" alt="Logo">
 </div>
 
     <div class="head-txt">
