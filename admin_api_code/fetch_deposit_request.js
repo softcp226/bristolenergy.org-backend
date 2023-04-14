@@ -118,15 +118,11 @@ Router.delete("/delete", verifyToken, async (req, res) => {
       });
     const transaction = await Transaction.findById(deposit_request.transaction);
     if (!transaction)
-      console.log(
-        "An unexpected error occured,the deposit you requested to delete is not associated with a transaction",
-      );
-    // return res.status(400).json({
-    //   error: true,
-    //   errMessage:
-    //     "An unexpected error occured,the deposit you requested to delete is not associated with a transaction",
-    // });
-
+      return res.status(400).json({
+        error: true,
+        errMessage:
+          "An unexpected error occured,the deposit you requested to delete is not associated with a transaction",
+      });
     transaction.set({ status: "failed" });
     await transaction.save();
     await Deposit_request.findByIdAndDelete(req.body.deposit_request);

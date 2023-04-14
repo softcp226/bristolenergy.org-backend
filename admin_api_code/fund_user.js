@@ -6,11 +6,11 @@ const Admin = require("../model/admin");
 const validate_fund_user = require("../validation/validate_fund_user");
 
 Router.post("/", verifyToken, async (req, res) => {
-  try {
-    const request_isvalid = validate_fund_user(req.body);
-    if (request_isvalid != true)
-      return res.status(400).json({ error: true, errMessage: request_isvalid });
+  const request_isvalid = validate_fund_user(req.body);
+  if (request_isvalid != true)
+    return res.status(400).json({ error: true, errMessage: request_isvalid });
 
+  try {
     const admin = await Admin.findById(req.body.admin);
     if (!admin)
       return res.status(403).json({

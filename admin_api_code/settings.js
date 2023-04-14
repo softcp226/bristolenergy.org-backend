@@ -3,13 +3,13 @@ const Router = express.Router();
 const verifyToken = require("../secure-admin-api/verifyToken");
 const validate_admin_setting = require("../validation/validate_admin_setting");
 const Admin = require("../model/admin");
-const hashPassword = require("../admin-hash/hashPassword");
+const hashPassword = require("../hash/hashPassword");
 Router.post("/", verifyToken, async (req, res) => {
+  console.log(req.body);
+  const request_isvalid = validate_admin_setting(req.body);
+  if (request_isvalid != true)
+    return res.status(400).json({ error: true, errMessage: request_isvalid });
   try {
-    const request_isvalid = validate_admin_setting(req.body);
-    if (request_isvalid != true)
-      return res.status(400).json({ error: true, errMessage: request_isvalid });
-
     const admin = await Admin.findById(req.body.admin);
     if (!admin)
       return res.status(403).json({

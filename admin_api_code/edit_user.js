@@ -8,7 +8,7 @@ const User = require("../model/user");
 const hashPassword = require("../hash/hashPassword");
 
 Router.post("/", verifyToken, async (req, res) => {
-  // console.log(req.body);
+  console.log(req.body);
   const request_isvalid = validate_admin_edit_user(req.body);
   if (request_isvalid != true)
     return res.status(400).json({ error: true, errMessage: request_isvalid });
@@ -41,7 +41,7 @@ Router.post("/", verifyToken, async (req, res) => {
     });
 
     await user.save();
-    // console.log(user);
+    console.log(user);
     res
       .status(200)
       .json({ error: false, message: "user updated successfully" });
@@ -51,7 +51,7 @@ Router.post("/", verifyToken, async (req, res) => {
 });
 
 Router.post("/update/user/status", verifyToken, async (req, res) => {
-//  console.log(req.body)
+ console.log(req.body)
   const request_isvalid = validate_admin_update_user(req.body);
   if (request_isvalid != true)
     return res.status(400).json({ error: true, errMessage: request_isvalid });
@@ -76,6 +76,3 @@ Router.post("/update/user/status", verifyToken, async (req, res) => {
   }
 });
 module.exports = Router;
-
-
-

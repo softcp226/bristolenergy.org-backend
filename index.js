@@ -2,16 +2,54 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 require("dotenv").config();
-const cors=require("cors")
-app.use(cors())
+const cors = require("cors");
+const helmet = require("helmet");
+
+var corsOptions = {
+//   origin: "https://bristolenergy.info",
+  origin: "http://localhost:3000",
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+app.use(cors(corsOptions));
+app.use(helmet());
 // app.use("/", express.static("html"));
 
-app.post("/",(req,res)=>res.status(200).json({error:false,message:req.body}))
+const rateLimit = require("express-rate-limit");
+const limiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 60, // limit each IP to 60 requests per windowMs
+  message: "Too many requests from this IP, please try again later",
+});
+
+app.use(limiter);
+
+const winston = require("winston");
+const logger = winston.createLogger({
+  level: "info",
+  format: winston.format.json(),
+  defaultMeta: { service: "your-service-name" },
+  transports: [
+    new winston.transports.File({ filename: "logs/error.log", level: "error" }),
+    new winston.transports.File({ filename: "logs/combined.log" }),
+  ],
+});
+
+app.use((req, res, next) => {
+  logger.info(`Endpoint ${req.method} ${req.originalUrl} was accessed`, {
+    // user_id: req.user.id,
+    req: req.body,
+  });
+  next();
+});
+
+app.post("/", (req, res) =>
+  res.status(200).json({ error: false, message: req.body }),
+);
 
 const fetch_investment_packages = require("./api/fetch_investment_program");
 app.use("/api/investment_packages/fetch", fetch_investment_packages);
-const fetch_last_10_withdrawals$deposit=require("./admin_api/fetch_last_10_withdrawal&deposit")
-app.use("/last_10_withdrawals&deposit",fetch_last_10_withdrawals$deposit);
+const fetch_last_10_withdrawals$deposit = require("./admin_api/fetch_last_10_withdrawals&deposit");
+app.use("/last_10_withdrawals&deposit", fetch_last_10_withdrawals$deposit);
 
 // app.use("/admin", express.static("admin"));
 const admin_login = require("./admin_api/login");
@@ -62,11 +100,8 @@ app.use("/api/admin/setting", admin_setting);
 const fetch_top_referral = require("./admin_api/fetch_top_referral");
 app.use("/api/admin/user/top_referral", fetch_top_referral);
 
-
 const fetch_referral = require("./api/fetch_referrals");
 app.use("/api/user/referral/fetch", fetch_referral);
-
-
 
 const login = require("./api/login");
 app.use("/api/user/login", login);
@@ -111,7 +146,5 @@ app.use("/api/user/password/reset", reset_password);
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`running on port ${port}`));
 // /api/user/transactions/fetch
-
-
 
 // /api/user/create_investment

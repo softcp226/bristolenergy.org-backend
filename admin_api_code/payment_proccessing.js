@@ -7,20 +7,11 @@ const validate_admin_edit_payment_proccessing = require("../validation/validate_
 const Admin = require("../model/admin");
 
 Router.post("/", verifyToken, async (req, res) => {
-
+  const request_isvalid = validate_admin_add_payment_proccessing(req.body);
+  if (request_isvalid != true)
+    return res.status(400).json({ error: true, errMessage: request_isvalid });
 
   try {
-    const request_isvalid = validate_admin_add_payment_proccessing(req.body);
-    if (request_isvalid != true)
-      return res.status(400).json({ error: true, errMessage: request_isvalid });
-
-       const admin = await Admin.findById(req.body.admin);
-       if (!admin)
-         return res.status(403).json({
-           error: true,
-           errMessage: "Forbidden!, please login again to access this api",
-         });
-
     const payment_proccessing = await new Payment_proccessing({
       name: req.body.name.toUpperCase(),
       icon: req.body.icon,
@@ -30,25 +21,17 @@ Router.post("/", verifyToken, async (req, res) => {
     await payment_proccessing.save();
     res.status(200).json({ error: false, message: "success!" });
   } catch (error) {
-    // console.log(error)
+    console.log(error)
     res.status(400).json({ error: true, errMessage: error.message });
   }
 });
 
 Router.post("/edit", verifyToken, async (req, res) => {
-  
+  const request_isvalid = validate_admin_edit_payment_proccessing(req.body);
+  if (request_isvalid != true)
+    return res.status(400).json({ error: true, errMessage: request_isvalid });
+
   try {
-    const request_isvalid = validate_admin_edit_payment_proccessing(req.body);
-    if (request_isvalid != true)
-      return res.status(400).json({ error: true, errMessage: request_isvalid });
-
-       const admin = await Admin.findById(req.body.admin);
-       if (!admin)
-         return res.status(403).json({
-           error: true,
-           errMessage: "Forbidden!, please login again to access this api",
-         });
-
     const payment_proccessing = await Payment_proccessing.findById(
       req.body.proccesing_id,
     );
