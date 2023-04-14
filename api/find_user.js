@@ -19,8 +19,8 @@ Router.post("/", verifyToken, async (req, res) => {
         "an unexpected error occured please login again to access this api",
     });
 
-  const check_inv_exp_result = await check_inv_expiration(req);
-  console.log(await check_inv_exp_result);
+ await check_inv_expiration(req);
+  // console.log(await check_inv_exp_result);
 
   res.status(200).json({ error: false, message: user });
 });

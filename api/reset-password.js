@@ -6,10 +6,13 @@ const User = require("../model/user");
 const Recover_password = require("../model/recover-password");
 
 Router.post("/", async (req, res) => {
-  const pwd_in_goodshape = validate_change_password(req.body);
-  if (pwd_in_goodshape != true)
-    return res.status(400).json({ error: true, errMessage: pwd_in_goodshape });
   try {
+    const pwd_in_goodshape = validate_change_password(req.body);
+    if (pwd_in_goodshape != true)
+      return res
+        .status(400)
+        .json({ error: true, errMessage: pwd_in_goodshape });
+
     const recover_password = await Recover_password.findOne({
       reset_token: req.body.reset_token,
     });

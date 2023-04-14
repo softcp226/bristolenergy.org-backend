@@ -6,10 +6,11 @@ const validate_user_fetch_payment_proccessing = require("../validation/validate_
 const User = require("../model/user");
 
 Router.post("/", verifyToken, async (req, res) => {
+ try {
   const request_isvalid = validate_user_fetch_payment_proccessing(req.body);
   if (request_isvalid != true)
     return res.status(400).json({ error: true, errMessage: request_isvalid });
-  try {
+  
     const user = await User.findById(req.body.user);
     if (!user)
       return res.status(404).json({
@@ -26,7 +27,7 @@ Router.post("/", verifyToken, async (req, res) => {
 
     res.status(200).json({ error: false, message: payment_proccessing });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     res.status(400).json({ error: true, errMessage: error.message });
   }
 });
