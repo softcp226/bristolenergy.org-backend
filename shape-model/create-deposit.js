@@ -21,7 +21,7 @@ const set_expiring_date = (req) => {
 };
 
 const create_deposit = async (req) => {
-  console.log("called create deposit");
+  // console.log("called create deposit");
   // let currentdate = new Date();
   // let datetime = `${currentdate.getFullYear()}-${
   //   currentdate.getMonth() + 1

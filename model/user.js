@@ -76,6 +76,27 @@ const userSchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
+  bitcoin_balance: {
+    type: Number,
+    default: 0,
+  },
+  ethereum_balance: {
+    type: Number,
+    default: 0,
+  },
+  usdt_balance: {
+    type: Number,
+    default: 0,
+  },
+  payer_balance: {
+    type: Number,
+    default: 0,
+  },
+  perfect_money_balance: {
+    type: Number,
+    default: 0,
+  },
+
   referral_link: String,
   made_first_deposit: {
     type: Boolean,

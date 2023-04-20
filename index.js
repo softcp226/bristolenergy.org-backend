@@ -6,8 +6,12 @@ const cors = require("cors");
 const helmet = require("helmet");
 
 var corsOptions = {
-//   origin: "https://bristolenergy.info",
-  origin: "http://localhost:3000",
+  //   origin: "https://bristolenergy.info",
+  origin: [
+    "http://localhost:3000",
+    "https://bristolenergy.info",
+    "http://bristolenergy.info",
+  ],
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 app.use(cors(corsOptions));

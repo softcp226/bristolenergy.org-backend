@@ -111,22 +111,26 @@ Router.post("/", verifyToken, async (req, res) => {
           error: true,
           errMessage: "invalid request, please login again to make a deposit",
         });
-      const create_deposit_request = await create_deposit(req);
-      // console.log("deposit amount", req.body.deposit_amount);
 
-      if (parseInt(req.body.deposit_amount) < 1)
+         if (parseInt(req.body.deposit_amount) < 50)
         return res.status(400).json({
           error: true,
           errMessage:
-            "deposit amount must not be lesser than minimum deposit of $1",
+            "deposit amount must not be lesser than minimum deposit of $50",
         });
 
+        
+      const create_deposit_request = await create_deposit(req);
+      // console.log("deposit amount", req.body.deposit_amount);
+
+     
       transporter.sendMail(
         create_mail_options({
-          first_name: user.first_name,
-          last_name: user.last_name,
+          // first_name: user.first_name,
+          // last_name: user.last_name,
+           full_name:user. full_name,
           reciever: user.email,
-          amount: req.body.deposit_amount,
+          deposit_amount: req.body.deposit_amount,
         }),
         (err, info) => {
           if (err) return err.message;
