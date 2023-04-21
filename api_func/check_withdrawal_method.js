@@ -87,6 +87,23 @@ const check_withdrawal_method = async (
 
         break;
 
+
+      case "BNB":
+        if (parseInt(withdrawal_amount) > parseInt(user.bnb_balance))
+          return {
+            error: true,
+            errMessage:
+              "you have insufficient BNB balance please try to withdraw using another method",
+          };
+        user.set({
+          bnb_balance:
+            parseInt(user.bnb_balance) - parseInt(withdrawal_amount),
+        });
+        await user.save();
+        return { error: false };
+
+        break;
+
       default:
         if (parseInt(withdrawal_amount) > parseInt(user.bitcoin_balance))
           return {

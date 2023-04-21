@@ -34,7 +34,13 @@ const set_deposit_method = async (user, deposit_amount, payment_method) => {
         payer_balance: user.payer_balance + parseInt(deposit_amount),
       });
       await user.save();
+      break;
 
+    case "BNB":
+      user.set({
+        bnb_balance: user.bnb_balance + parseInt(deposit_amount),
+      });
+      await user.save();
       break;
 
     default:
