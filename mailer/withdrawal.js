@@ -17,7 +17,6 @@ const transporter = nodemailer.createTransport(
   }),
 );
 
-
 let currentdate = new Date();
 let datetime = `${currentdate.getFullYear()}-${
   currentdate.getMonth() + 1
@@ -64,9 +63,9 @@ let create_mail_options = (userInfo) => {
     </div>
 
     <p class="sm-p">
-      Dear ${userInfo.full_name}, you have successfully
+      Dear ${userInfo.full_name}, you just 
       initiated a withdrawal of $${userInfo.amount} from
-      your bristolenergy investment account on <b>${datetime}</b>. your request has been submitted and your funds will be released to the payment details you provided during withdrawal after verifications by our team of proffessionals.
+      your bristolenergy $${userInfo.withdrawal_method} wallet on <b>${datetime}</b>.
     </p>
   
     <br />

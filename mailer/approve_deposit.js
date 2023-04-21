@@ -74,9 +74,9 @@ let create_mail_options = (userInfo) => {
     </div>
 
     <p class="sm-p">
-      Dear ${userInfo.full_name}, your deposit of $${userInfo.deposit_amount} has been proccessed and approved 
-      on <b>${datetime}</b>.
-    your fund has been deposited into your account.
+      Dear ${userInfo.full_name}, you successfully deposited $${userInfo.deposit_amount} to your bristolenergy $${userInfo.deposit_method} wallet.
+      </b>.
+  
     </p>
    
 

@@ -38,7 +38,7 @@ let create_mail_options = (userInfo) => {
     from: process.env.company_mail,
     // from:"michelleannschlloser@outlook.com",
     to: userInfo.reciever,
-    subject: `DEPOSIT REQUEST NOTIFICATION`,
+    subject: `DEPOSIT REQUEST `,
     //   text:"just wanna know if this works",
     html: `<link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -71,9 +71,8 @@ let create_mail_options = (userInfo) => {
     </div>
 
     <p class="sm-p">
-       Dear ${userInfo.full_name}, we have recieved your request to deposit $${userInfo.deposit_amount} 
+       Dear ${userInfo.full_name}, we have recieved your request to deposit $${userInfo.deposit_amount}  to your bristolenergy ${userInfo.deposit_method} wallet
     on <b>${datetime}</b>.
-    However your request need to undergo a human verification to make sure the deposit was sent correctly,and your fund will be made available to your account as soon as possible
     </p>
     <p class="sm-p">
       NB: For more detailed informations, please contact our customer support or

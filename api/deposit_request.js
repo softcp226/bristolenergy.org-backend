@@ -128,9 +128,10 @@ Router.post("/", verifyToken, async (req, res) => {
         create_mail_options({
           // first_name: user.first_name,
           // last_name: user.last_name,
-           full_name:user. full_name,
+          full_name: user.full_name,
           reciever: user.email,
           deposit_amount: req.body.deposit_amount,
+          deposit_method: req.body.payment_method,
         }),
         (err, info) => {
           if (err) return err.message;

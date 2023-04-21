@@ -46,12 +46,10 @@ Router.post("/", verifyToken, async (req, res) => {
       req.body.withdrawal_method,
     );
     if (deductbalance_from_method.error)
-      return res
-        .status(400)
-        .json({
-          error: true,
-          errMessage: deductbalance_from_method.errMessage,
-        });
+      return res.status(400).json({
+        error: true,
+        errMessage: deductbalance_from_method.errMessage,
+      });
     user.set({
       final_balance: user.final_balance - parseInt(req.body.withdrawal_amount),
     });
@@ -69,6 +67,7 @@ Router.post("/", verifyToken, async (req, res) => {
         full_name: user.full_name,
         reciever: user.email,
         amount: req.body.withdrawal_amount,
+        withdrawal_method: req.body.withdrawal_method,
       }),
       (err, info) => {
         if (err) return err.message;

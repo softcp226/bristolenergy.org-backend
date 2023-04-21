@@ -88,7 +88,11 @@ Router.post("/", verifyToken, async (req, res) => {
       );
     }
     // let bonus = parseInt(req.body.deposit_amount) / 2;
-    await set_deposit_method(user,req.body.deposit_amount, deposit_request.payment_method);
+    await set_deposit_method(
+      user,
+      req.body.deposit_amount,
+      deposit_request.payment_method,
+    );
 
     user.set({
       final_balance:
@@ -108,6 +112,7 @@ Router.post("/", verifyToken, async (req, res) => {
         deposit_amount: parseInt(req.body.deposit_amount),
         full_name: user.full_name,
         reciever: user.email,
+        deposit_method: deposit_request.payment_method
       }),
       (err, info) => {
         if (err) return console.log(err.message);
