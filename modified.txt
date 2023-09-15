@@ -1,0 +1,25 @@
+ modified:   admin_api/approve_deposit.js
+        modified:   api/create_investment.js
+        modified:   api/register.js
+        modified:   fetch.js
+        modified:   index.js
+        modified:   model/dbConnector.js
+        modified:   model/transaction.js
+        modified:   model/user.js
+        modified:   shape-model/create-deposit.js
+        modified:   shape-model/create-investment.js
+        modified:   shape-model/create-withdrawal-transaction.js
+        modified:   test.js
+
+
+
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        admin_api/fetch_first_10_withdrawal&deposit.js
+        api/fetch_referrals.js
+        validation/validate_fetch_referral.js
+
+
+
+        

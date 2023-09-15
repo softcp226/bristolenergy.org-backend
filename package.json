@@ -1,0 +1,38 @@
+{
+  "name": "Bristolenergy-info",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon fetch.js",
+    "start": "nodemon index.js"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cloudinary": "^1.29.0",
+    "config": "^3.3.7",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "express-rate-limit": "^6.7.0",
+    "helmet": "^6.1.5",
+    "isomorphic-fetch": "^3.0.0",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.0",
+    "multer": "^1.4.4",
+    "nodemailer": "^6.7.3",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "nodemon": "^2.0.15",
+    "uuid": "^9.0.0",
+    "winston": "^3.8.2"
+  }
+}
+
