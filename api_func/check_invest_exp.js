@@ -17,7 +17,8 @@ const add_fundsto_depositmethod = async (depositInfo) => {
       depositInfo.user.set({
         bitcoin_balance:
           parseInt(depositInfo.user.bitcoin_balance) +
-          parseInt(depositInfo.investment.amount),
+          parseInt(depositInfo.investment.amount) +
+          parseInt(depositInfo.investment.pending_profit),
       });
       await depositInfo.user.save();
       break;
@@ -26,7 +27,9 @@ const add_fundsto_depositmethod = async (depositInfo) => {
       depositInfo.user.set({
         ethereum_balance:
           parseInt(depositInfo.user.ethereum_balance) +
-          parseInt(depositInfo.investment.amount),
+          parseInt(depositInfo.investment.amount)+
+                    parseInt(depositInfo.investment.pending_profit),
+
       });
       await depositInfo.user.save();
       break;
@@ -35,7 +38,8 @@ const add_fundsto_depositmethod = async (depositInfo) => {
       depositInfo.user.set({
         usdt_balance:
           parseInt(depositInfo.user.usdt_balance) +
-          parseInt(depositInfo.investment.amount),
+          parseInt(depositInfo.investment.amount) +
+          parseInt(depositInfo.investment.pending_profit),
       });
       await depositInfo.user.save();
       break;
@@ -44,7 +48,9 @@ const add_fundsto_depositmethod = async (depositInfo) => {
       depositInfo.user.set({
         perfect_money_balance:
           parseInt(depositInfo.user.perfect_money_balance) +
-          parseInt(depositInfo.investment.amount),
+          parseInt(depositInfo.investment.amount)
+          +          parseInt(depositInfo.investment.pending_profit),
+
       });
       await depositInfo.user.save();
       break;
@@ -53,7 +59,8 @@ const add_fundsto_depositmethod = async (depositInfo) => {
       depositInfo.user.set({
         payer_balance:
           parseInt(depositInfo.user.payer_balance) +
-          parseInt(depositInfo.investment.amount),
+          parseInt(depositInfo.investment.amount) +
+          parseInt(depositInfo.investment.pending_profit),
       });
       await depositInfo.user.save();
       break;
@@ -62,7 +69,8 @@ const add_fundsto_depositmethod = async (depositInfo) => {
       depositInfo.user.set({
         bnb_balance:
           parseInt(depositInfo.user.bnb_balance) +
-          parseInt(depositInfo.investment.amount),
+          parseInt(depositInfo.investment.amount) +
+          parseInt(depositInfo.investment.pending_profit),
       });
       await depositInfo.user.save();
       break;
@@ -71,7 +79,8 @@ const add_fundsto_depositmethod = async (depositInfo) => {
       depositInfo.user.set({
         usdt_balance:
           parseInt(depositInfo.user.usdt_balance) +
-          parseInt(depositInfo.investment.amount),
+          parseInt(depositInfo.investment.amount)+          parseInt(depositInfo.investment.pending_profit),
+
       });
       await depositInfo.user.save();
       break;
@@ -101,9 +110,11 @@ const cancel_investment = async (investment) => {
         parseInt(user.active_investment) - parseInt(investment.amount),
     });
 
-    add_fundsto_depositmethod({ user, investment });
 
-    user.save();
+    // user.save();
+
+        add_fundsto_depositmethod({ user, investment });
+
     await Investment.findByIdAndDelete(investment._id);
     return { error: false, message: "success, you cancelled an investment" };
   } catch (error) {
@@ -135,6 +146,7 @@ const check_inv_expiration = async (req) => {
           error: false,
           message: "investment is still in proccess and has'nt ended",
         };
+
       }
     });
   } catch (error) {
